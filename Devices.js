@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Top from './Top';
 import React, {Component} from 'react';
+import { RefreshControl} from 'react-native'
+
 
 
 class Devices extends Component<{ navigation: any }> {
@@ -10,8 +12,13 @@ class Devices extends Component<{ navigation: any }> {
         this.state = {
             table: [],
             loaded: false,
+            refreshing:false,
         };
     }
+
+
+
+
 
     loadFromAsyncStorage() {
         AsyncStorage.getItem('Tablica')
@@ -35,6 +42,7 @@ class Devices extends Component<{ navigation: any }> {
     componentDidUpdate() {
     }
 
+
     render() {
         let {navigation} = this.props;
         let data;
@@ -54,6 +62,7 @@ class Devices extends Component<{ navigation: any }> {
             data = <></>;
         }
         return (
+
 
             <SafeAreaView style={{flex:1,marginBottom:12,}}>
                 <Top title="Devices"/>

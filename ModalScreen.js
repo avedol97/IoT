@@ -59,10 +59,7 @@ class ModalScreen extends Component<{ navigation: any }> {
 
     saveDevice = () =>{
         this.getValues();
-        // this.props.navigation.reset({
-        //     index: 0,
-        //     routes: [{ name: 'Devices' }],
-        // })
+        this.props.navigation.navigate('Devices');
     }
 
     render() {

@@ -5,8 +5,10 @@ import SplashScreen from 'react-native-splash-screen';
 import Devices from './Devices';
 import ModalScreen from './ModalScreen';
 import Connection from './Connection';
+import BottomNavigator from './BottomNavigator';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Tab = createBottomTabNavigator();
+const RootStack = createStackNavigator();
 
 class App extends Component {
     constructor(props) {
@@ -20,11 +22,10 @@ class App extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Tab.Navigator>
-                    <Tab.Screen name="Devices" component={Devices} unmountOnBlur={true} options={{unmountOnBlur: true}}/>
-                    <Tab.Screen name="Connection" component={Connection} unmountOnBlur={true} options={{unmountOnBlur: true}}/>
-                    <Tab.Screen name="MyModal" component={ModalScreen} unmountOnBlur={true} options={{unmountOnBlur: true}}/>
-                </Tab.Navigator>
+                <RootStack.Navigator mode="modal" headerMode="none">
+                    <RootStack.Screen name="BottomNavigator" component={BottomNavigator} unmountOnBlur={true} options={{unmountOnBlur: true}}/>
+                    <RootStack.Screen name="MyModal" component={ModalScreen} unmountOnBlur={true} options={{unmountOnBlur: true}}/>
+                </RootStack.Navigator>
             </NavigationContainer>
 
         );
